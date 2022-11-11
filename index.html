@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>The Dice Game</title>
+</head>
+<body>
+    <div id="game-selection" class="ccc opacity">
+        <h1 class="shadow">The Dice Game</h1>
+        <h2 id="one-player-button" class="game-select shadow">1 Player</h2>
+        <h2 id="two-player-button" class="game-select shadow">2 Player</h2>
+    </div>
+    <div id="one-player" class="ccc">
+        <h1 class="shadow">Welcome To The One Player Dice Game</h1>
+        <div id="one-player-game-box" class="ccc">
+            <h2 class="shadow">Score</h2>
+            <p id="one-player-round-score" class="shadow">0</p>
+            <h2 class="shadow">Total Score</h2>
+            <p id="one-player-total-score" class="shadow">0</p>
+            <img src="images/Dice1.png" alt="" id="one-player-dice">
+            <button id="one-player-roll-dice">Roll Dice</button>
+        </div>
+        <div id="one-player-win" class="ccc">
+            <h2 class="shadow">You Win!</h2>
+            <h2 class="shadow">Score</h2>
+            <p id="one-player-total" class="shadow">0</p>
+            <button id="one-player-win-button">Restart</button>
+        </div>
+        <div id="game-over" class="ccc">
+            <img src="images/Dice1.png" alt="">
+            <h2 class="shadow">You Lose!</h2>
+            <button id="one-player-game-over-button">Restart</button>
+        </div>
+    </div>
+    <div id="two-player" class="ccc">
+        <h1 class="shadow">Welcome To The Two Player Dice Game</h1>
+        <!-- <div id="set-score">
+            <p class="shadow">What score would you like to play to?</p>
+        </div> -->
+        <div id="two-player-game-box">
+            <h1 id="player-turn" class="player-one-turn">Player 1's turn</h1>
+            <div id="two-player-player-box">
+                <div id="player-one-sec" class="player-sec ccc">
+                    <h2 class="shadow">Player 1</h2>
+                    <img src="images/Dice1.png" alt="" id="player-one-dice">
+                    <h2 class="shadow">Score</h2>
+                    <p id="player-one-score" class="shadow">0</p>
+                    <h2 class="shadow">Total Score</h2>
+                    <p id="player-one-total-score" class="shadow">0</p>
+                    <div id="player-one-buttons">
+                        <button id="player-one-roll">Roll</button>
+                        <button id="player-one-hold">Hold</button>
+                    </div>
+                </div>
+                <div id="player-two-sec" class="player-sec ccc">
+                    <h2 class="shadow">Player 2</h2>
+                    <img src="images/Dice1.png" alt="" id="player-two-dice">
+                    <h2 class="shadow">Score</h2>
+                    <p id="player-two-score" class="shadow">0</p>
+                    <h2 class="shadow">Total Score</h2>
+                    <p id="player-two-total-score" class="shadow">0</p>
+                    <div id="player-two-buttons">
+                        <button id="player-two-roll">Roll</button>
+                        <button id="player-two-hold">Hold</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
