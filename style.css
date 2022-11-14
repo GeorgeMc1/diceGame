@@ -10,14 +10,19 @@ html{
 }
 h1{
     text-align: center;
+    color: white;
 }
 h2{
     margin: 10px 0;
     text-align: center;
+    font-size: 28px;
+    color: white;
 }
 p{
-    margin: 10px 0;
+    margin: 0;
     text-align: center;
+    font-size: 20px;
+    color: white;
 }
 button{
     margin: 10px 0;
@@ -68,18 +73,19 @@ button{
 }
 #two-player-player-box{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     width: 100%;
 }
 .player-sec{
     display: flex;
     justify-content: flex-start;
+    margin: 0 50px;
 }
 .player-one-turn{
-    text-shadow: 0 0 5px rgb(255, 0, 0);
+    text-shadow: 0 2px 10px red, 0 -2px 10px red, 2px 0 10px red, -2px 0 10px red;
 }
 .player-two-turn{
-    text-shadow: 0 0 5px rgb(0, 0, 255);
+    text-shadow: 0 2px 10px rgb(0, 0, 255), 0 -2px 10px rgb(0, 0, 255), 2px 0 10px blue, -2px 0 10px blue;
 }
 #player-two-buttons{
     display: none;
