@@ -14,7 +14,7 @@ onePlayerTotal = document.getElementById("one-player-total");
 onePlayerGameOverButton = document.getElementById("one-player-game-over-button");
 onePlayerWinButton = document.getElementById("one-player-win-button");
 twoPlayer = document.getElementById("two-player");
-playerTurn = document.getElementById("player-turn");
+playerTurnDisplay = document.getElementById("player-turn");
 playerOneScore = document.getElementById("player-one-score");
 playerOneTotalScoreDisplay = document.getElementById("player-one-total-score");
 playerTwoScore = document.getElementById("player-two-score");
@@ -26,6 +26,10 @@ playerTwoHold = document.getElementById("player-two-hold");
 playerOneButtons = document.getElementById("player-one-buttons");
 playerTwoButtons = document.getElementById("player-two-buttons");
 playerOneDice = document.getElementById("player-one-dice");
+playerTwoDice = document.getElementById("player-two-dice");
+twoPlayerWinSec = document.getElementById("two-player-win-sec");
+winningPlayer = document.getElementById("winning-player");
+playAgain = document.getElementById("play-again");
 playerTurn = "player 1";
 startOnePlayer = () =>{
     onePlayerTotalScoreDisplay.innerHTML = onePlayerTotalScore = 0;
@@ -56,9 +60,13 @@ checkPlayerTurn = () => {
     if (playerTurn == "player 1"){
         playerOneButtons.style.display = "inline-block";
         playerTwoButtons.style.display = "none";
+        playerTurnDisplay.innerHTML = "Player 1's turn";
+        playerTurnDisplay.classList = "player-one-turn";
     } else {
         playerOneButtons.style.display = "none";
         playerTwoButtons.style.display = "inline-block";
+        playerTurnDisplay.innerHTML = "Player 2's turn";
+        playerTurnDisplay.classList = "player-two-turn";
     }
 }
 rollDice = () =>{
@@ -77,6 +85,41 @@ playerOneRollDice = () => {
     randomNumber = Math.floor(Math.random() * 6) + 1;
     playerOneScore.innerHTML = randomNumber;
     playerOneDice.setAttribute("src", "images/Dice" + randomNumber + ".png");
+    if (randomNumber == 1) {
+        playerOneTotalScoreDisplay.innerHTML = "reset";
+        playerOneTotalScore = 0
+        setTimeout(() => {
+            playerOneTotalScoreDisplay.innerHTML = playerOneTotalScore;
+        }, 1000);
+        playerTurn = "player 2";
+        checkPlayerTurn();
+    } else {
+        playerOneTotalScore += randomNumber;
+        playerOneTotalScoreDisplay.innerHTML = playerOneTotalScore;
+        if (playerOneTotalScore >= 20) {
+            twoPlayerWin();
+        }
+    }
+}
+playerTwoRollDice = () => {
+    randomNumber = Math.floor(Math.random() * 6) + 1;
+    playerTwoScore.innerHTML = randomNumber;
+    playerTwoDice.setAttribute("src", "images/Dice" + randomNumber + ".png");
+    if (randomNumber == 1) {
+        playerTwoTotalScoreDisplay.innerHTML = "reset";
+        playerTwoTotalScore = 0
+        setTimeout(() => {
+            playerTwoTotalScoreDisplay.innerHTML = playerTwoTotalScore;
+        }, 1000);
+        playerTurn = "player 1";
+        checkPlayerTurn();
+    } else {
+        playerTwoTotalScore += randomNumber;
+        playerTwoTotalScoreDisplay.innerHTML = playerTwoTotalScore;
+        if (playerTwoTotalScore >= 20) {
+            twoPlayerWin();
+        }
+    }
 }
 onePlayerGameOver = () => {
     onePlayerGameBox.style.display = "none";
@@ -86,6 +129,20 @@ onePlayerWin = (score) => {
     onePlayerGameBox.style.display = "none";
     onePlayerWinBox.style.display = "flex";
     onePlayerTotal.innerHTML = score;
+}
+twoPlayerWin = () => {
+    playerOneButtons.style.display = "none";
+    playerTwoButtons.style.display = "none";
+    twoPlayerWinSec.style.display = "flex";
+    if (playerTurn == "player 1") {
+        winningPlayer.innerHTML = "Player 1 Won!";
+    } else {
+        winningPlayer.innerHTML = "Player 2 Won!";
+    }
+}
+twoPlayerReset = () => {
+    twoPlayerWinSec.style.display = "none";
+    startTwoPlayer();
 }
 onePlayerButton.addEventListener("click", () => {
     startOnePlayer();
@@ -108,4 +165,18 @@ twoPlayerButton.addEventListener("click", () => {
 })
 playerOneRoll.addEventListener("click", () => {
     playerOneRollDice();
+})
+playerTwoRoll.addEventListener("click", () => {
+    playerTwoRollDice();
+})
+playerOneHold.addEventListener("click", () => {
+    playerTurn = "player 2";
+    checkPlayerTurn();
+})
+playerTwoHold.addEventListener("click", () => {
+    playerTurn = "player 1";
+    checkPlayerTurn();
+})
+playAgain.addEventListener("click", () => {
+    twoPlayerReset();
 })
